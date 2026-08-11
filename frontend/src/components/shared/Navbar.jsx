@@ -1,8 +1,11 @@
 import React from 'react';
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
 import { Button } from '../ui/button'
-import { Avatar, AvatarImage } from "../ui/avatar"
+import { Avatar,  AvatarImage } from "../ui/avatar"
+import { LogOut, User2 } from 'lucide-react'
+
 const Navbar = () => {
+    const user = false; // Replace with your authentication logic
     return (
         <div className='bg-white'>
         <div className="flex items-center justify-between h-16 mx-auto max-w-7xl">
@@ -15,16 +18,48 @@ const Navbar = () => {
                 <li>Jobs</li>
                 <li>Browse</li>
             </ul>
-      <Popover>
+            {
+              !user ? (
+                <div>
+                    <Button variant="outline">Login</Button>
+                    <Button>Signup</Button>
+                </div>
+
+              )  : (
+                <Popover>
          <PopoverTrigger asChild>
           <Avatar className="cursor-pointer">
              <AvatarImage src="https://github.com/shadcn.png" />
      </Avatar>        
 </PopoverTrigger>
-        <PopoverContent>
-             <h1>Helo</h1>
+        <PopoverContent className="w-88">
+     <div className="flex gap-4 p-4 space-y-2">
+        <Avatar className="cursor-pointer">
+             <AvatarImage src="https://github.com/shadcn.png" />
+     </Avatar> 
+     <div>
+     <h4 className="font-medium">johndoe</h4>
+     <p className="text-sm text-muted-foreground">johndoe@example.com</p>
+     </div>
+     </div>
+
+      <div className="flex flex-col gap-3 my-2 text-gray-600"> 
+        <div className="flex items-center gap-2 cursor-pointer">
+            <User2 /> 
+        <Button variant="link">Profile</Button>
+        </div>
+
+
+        <div className="flex items-center gap-2 cursor-pointer">
+            <LogOut />
+        <Button variant="link">Logout</Button>
+        </div>
+      </div>
         </PopoverContent>
       </Popover>
+              )
+            }
+      
 
             </div>
         </div>
