@@ -9,9 +9,7 @@ import { useState } from 'react'
 
 const Login = () => {
     const [input, setInput] = useState({
-       fullName: "",
        email: "",
-       phoneNumber: "",
        password: "",
        role: ""
     })
@@ -19,21 +17,26 @@ const Login = () => {
    const changeEventHandler = (e) => {
     setInput({...input, [e.target.name]: e.target.value});
    } 
-    const changeFileHandler = (e) => {
-        setInput({...input, file: e.target.files?.[0]});
-    }
+    
+    const submitHandler = async (e) => {
+      e.preventDefault();
+      console.log(input);
+   }
    
     return (
         <div>
             <Navbar />
            <div className="flex items-center justify-center mx-auto max-w-7xl">
-            <from action="" className="w-1/2 p-4 my-10 border border-gray-200 rounded-md">
+            <form onSubmit={submitHandler} className="w-1/2 p-4 my-10 border border-gray-200 rounded-md">
                 <h1 className="mb-5 text-2xl font-bold">Login</h1>
                 
                 <div className="my-2">
                   <Label>Email</Label> 
                   <Input 
                    type="email"
+                   value={input.email}
+                   name="email"
+                   onChange={changeEventHandler}
                    placeholder="Enter your email"
                   /> 
                 </div>
@@ -43,7 +46,10 @@ const Login = () => {
                   <Label>Password</Label> 
                   <Input 
                    type="password"
-                   placeholder="••••••••"
+                   value={input.password}
+                     name="password"
+                    onChange={changeEventHandler}
+                    placeholder="••••••••"
                   /> 
                 </div>
                 <div className="flex items-center justify-between ">
@@ -53,6 +59,8 @@ const Login = () => {
         type="radio"
         name="role"
         value="student"
+        checked={input.role === 'student'}
+       onChange={changeEventHandler}
         className="cursor-pointer"
          />
         <Label htmlFor="r1">Student</Label>
@@ -63,6 +71,8 @@ const Login = () => {
           type="radio"
           name="role"
           value="recruiter"
+          checked={input.role === 'recruiter'}
+          onChange={changeEventHandler}
           className="cursor-pointer"
         />
         <Label htmlFor="r3">Recruiter</Label>
@@ -73,7 +83,7 @@ const Login = () => {
 
     <Button type="Submit" className="w-full my-4">Login</Button>
     <span className="text-sm">Don't have an account? <Link to="/signup" className="text-blue-500">Sign Up</Link></span>
-            </from>
+            </form>
            </div>
         </div>
     )
