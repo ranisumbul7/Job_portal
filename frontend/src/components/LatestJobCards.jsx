@@ -2,7 +2,7 @@ import React from 'react'
 import { Badge } from './ui/badge'
 import { useNavigate } from 'react-router-dom'
 
-const LatestJobCards = ({ job }) => {
+const LatestJobCards = ({job}) => {
     const navigate = useNavigate();
     return (
         <div onClick={()=> navigate(`/description/${job._id}`)} className='p-5 bg-white border border-gray-100 rounded-md shadow-xl cursor-pointer'>
@@ -24,4 +24,4 @@ const LatestJobCards = ({ job }) => {
     )
 }
 
-export default LatestJobCards;
+export default LatestJobCards
