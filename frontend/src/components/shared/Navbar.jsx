@@ -4,9 +4,10 @@ import { Button } from '../ui/button'
 import { Avatar,  AvatarImage } from "../ui/avatar"
 import { LogOut, User2 } from 'lucide-react'
 import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
-    const user = false; // Replace with your authentication logic
+const {user} = useSelector((state) => state.auth); 
     return (
         <div className='bg-white'>
         <div className="flex items-center justify-between h-16 mx-auto max-w-7xl">
@@ -51,7 +52,7 @@ const Navbar = () => {
       <div className="flex flex-col gap-3 my-2 text-gray-600"> 
         <div className="flex items-center gap-2 cursor-pointer">
             <User2 /> 
-        <Button variant="link">Profile</Button>
+        <Button variant="link"><Link to="/profile">View Profile</Link></Button>
         </div>
 
 
