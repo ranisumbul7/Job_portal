@@ -17,7 +17,7 @@ const {user} = useSelector((state) => state.auth);
             <div className='flex items-center gap-12'>
                 <ul className='flex items-center gap-5 font-medium'>
                 <li><Link to="/">Home</Link></li>
-                <li><Link to="/job">Jobs</Link></li>
+                <li><Link to="/jobs">Jobs</Link></li>
                 <li><Link to="/browse">Browse</Link></li>
 
             </ul>
